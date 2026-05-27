@@ -777,17 +777,14 @@ const N8N_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwCW82vJTtr-GYC
                         };
 
                         try {
-                                const response = await fetch(N8N_WEBHOOK_URL, {
-                                        method: 'POST',
-                                        headers: {
-                                                'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify(formData),
-                                });
-
-                                if (!response.ok) {
-                                        throw new Error('Server responded with an error');
-                                }
+                               await fetch(N8N_WEBHOOK_URL, {
+  method: 'POST',
+  mode: 'no-cors',
+  headers: {
+    'Content-Type': 'text/plain;charset=utf-8',
+  },
+  body: JSON.stringify(formData),
+});
 
                                 // Success state
                                 alertBox.textContent = 'Đăng ký thành công! Vui lòng kiểm tra email của bạn để nhận quà tặng.';
